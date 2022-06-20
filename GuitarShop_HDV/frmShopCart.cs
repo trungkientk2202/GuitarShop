@@ -89,17 +89,31 @@ namespace GuitarShop_HDV
                     break;
             }
             Program.listCart = await GetListShopCarByID(Program.user.id);
-            Program.idShopCart = Program.listCart[0].id;
-            bdsShopCart.DataSource = Program.listCart;
-            dgvShopCart.DataSource = Program.listCart;
-            Program.idGuitar = Program.listCart[0].idGuitar;
-            Program.guitarName= Program.listCart[0].guitarName; 
-            txtGuitarName.Text = Program.listCart[0].guitarName;
-            lblAmount.Text = Program.listCart[0].amount.ToString();
-            lblQuantity.Text = Program.listCart[0].quantity.ToString();
-            pbxImage.ImageLocation = Program.listCart[0].imageURL;
-            Program.total = 1.0 * Program.listCart[0].quantity * Program.listCart[0].amount;
-            txtPrice.Text = Program.total.ToString();
+            if (Program.listCart.Count > 0) {
+                Program.idShopCart = Program.listCart[0].id;
+                bdsShopCart.DataSource = Program.listCart;
+                dgvShopCart.DataSource = Program.listCart;
+                Program.idGuitar = Program.listCart[0].idGuitar;
+                Program.guitarName = Program.listCart[0].guitarName;
+                txtGuitarName.Text = Program.listCart[0].guitarName;
+                lblAmount.Text = Program.listCart[0].amount.ToString();
+                lblQuantity.Text = Program.listCart[0].quantity.ToString();
+                pbxImage.ImageLocation = Program.listCart[0].imageURL;
+                Program.total = 1.0 * Program.listCart[0].quantity * Program.listCart[0].amount;
+                txtPrice.Text = Program.total.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Giỏ hàng trống!");
+                Form frm = this.CheckExists(typeof(frmMain));
+                if (frm != null) frm.Activate();
+                else
+                {
+                    frmMain f = new frmMain();
+                    f.Show();
+                }
+                this.Hide();
+            }
         }
 
         private void dgvShopCart_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -156,14 +170,32 @@ namespace GuitarShop_HDV
             var json = await reponse.Content.ReadAsStringAsync();
             MessageBox.Show("Xoá thành công");
             Program.listCart = await GetListShopCarByID(Program.user.id);
-
-            bdsShopCart.DataSource = Program.listCart;
-            dgvShopCart.DataSource = Program.listCart;
-            txtGuitarName.Text = Program.listCart[0].guitarName;
-            lblAmount.Text = Program.listCart[0].amount.ToString();
-            lblQuantity.Text = Program.listCart[0].quantity.ToString();
-            double price = 1.0 * Program.listCart[0].quantity * Program.listCart[0].amount;
-            txtPrice.Text = price.ToString();
+            if (Program.listCart.Count > 0)
+            {
+                Program.idShopCart = Program.listCart[0].id;
+                bdsShopCart.DataSource = Program.listCart;
+                dgvShopCart.DataSource = Program.listCart;
+                Program.idGuitar = Program.listCart[0].idGuitar;
+                Program.guitarName = Program.listCart[0].guitarName;
+                txtGuitarName.Text = Program.listCart[0].guitarName;
+                lblAmount.Text = Program.listCart[0].amount.ToString();
+                lblQuantity.Text = Program.listCart[0].quantity.ToString();
+                pbxImage.ImageLocation = Program.listCart[0].imageURL;
+                Program.total = 1.0 * Program.listCart[0].quantity * Program.listCart[0].amount;
+                txtPrice.Text = Program.total.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Giỏ hàng trống!");
+                Form frm = this.CheckExists(typeof(frmMain));
+                if (frm != null) frm.Activate();
+                else
+                {
+                    frmMain f = new frmMain();
+                    f.Show();
+                }
+                this.Hide();
+            }
         }
 
         private void registerToolStripMenuItem_Click(object sender, EventArgs e)

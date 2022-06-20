@@ -247,11 +247,11 @@ namespace GuitarShop_HDV
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label7.Location = new System.Drawing.Point(543, 67);
+            this.label7.Location = new System.Drawing.Point(560, 67);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(291, 36);
+            this.label7.Size = new System.Drawing.Size(262, 36);
             this.label7.TabIndex = 9;
-            this.label7.Text = "Guitar management";
+            this.label7.Text = "User management";
             // 
             // panel4
             // 
@@ -457,7 +457,6 @@ namespace GuitarShop_HDV
             this.Name = "Usermanagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Usermanagement";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Usermanagement_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

@@ -49,6 +49,7 @@ namespace GuitarShop_HDV
             this.panel4 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvGuitar = new System.Windows.Forms.DataGridView();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtContents = new System.Windows.Forms.TextBox();
             this.btnBuy = new System.Windows.Forms.Button();
             this.lblName = new System.Windows.Forms.Label();
@@ -61,7 +62,6 @@ namespace GuitarShop_HDV
             this.pbx1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsGuitar)).BeginInit();
             this.panel3.SuspendLayout();
@@ -96,21 +96,21 @@ namespace GuitarShop_HDV
             // homeToolStripMenuItem1
             // 
             this.homeToolStripMenuItem1.Name = "homeToolStripMenuItem1";
-            this.homeToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.homeToolStripMenuItem1.Size = new System.Drawing.Size(163, 22);
             this.homeToolStripMenuItem1.Text = "Home";
             this.homeToolStripMenuItem1.Click += new System.EventHandler(this.homeToolStripMenuItem1_Click);
             // 
             // cartToolStripMenuItem
             // 
             this.cartToolStripMenuItem.Name = "cartToolStripMenuItem";
-            this.cartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cartToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.cartToolStripMenuItem.Text = "Cart";
             this.cartToolStripMenuItem.Click += new System.EventHandler(this.cartToolStripMenuItem_Click);
             // 
             // purchaseHistoryToolStripMenuItem
             // 
             this.purchaseHistoryToolStripMenuItem.Name = "purchaseHistoryToolStripMenuItem";
-            this.purchaseHistoryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.purchaseHistoryToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.purchaseHistoryToolStripMenuItem.Text = "Purchase History";
             this.purchaseHistoryToolStripMenuItem.Click += new System.EventHandler(this.purchaseHistoryToolStripMenuItem_Click);
             // 
@@ -242,6 +242,13 @@ namespace GuitarShop_HDV
             this.dgvGuitar.TabIndex = 0;
             this.dgvGuitar.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGuitar_CellClick);
             // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.Width = 177;
+            // 
             // txtContents
             // 
             this.txtContents.BackColor = System.Drawing.Color.White;
@@ -358,7 +365,7 @@ namespace GuitarShop_HDV
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Blue;
-            this.label2.Location = new System.Drawing.Point(398, 0);
+            this.label2.Location = new System.Drawing.Point(488, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(355, 55);
             this.label2.TabIndex = 2;
@@ -375,13 +382,6 @@ namespace GuitarShop_HDV
             this.panel1.Size = new System.Drawing.Size(1344, 721);
             this.panel1.TabIndex = 0;
             // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.Width = 177;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -391,8 +391,8 @@ namespace GuitarShop_HDV
             this.Controls.Add(this.panel1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Guitar Shop";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

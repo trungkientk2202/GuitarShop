@@ -443,7 +443,6 @@ namespace GuitarShop_HDV
             this.Name = "frmShopCart";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ShopCart";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmShopCart_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

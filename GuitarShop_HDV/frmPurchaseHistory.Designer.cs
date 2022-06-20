@@ -201,7 +201,7 @@ namespace GuitarShop_HDV
             // lblStatus
             // 
             this.lblStatus.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.Location = new System.Drawing.Point(768, 501);
+            this.lblStatus.Location = new System.Drawing.Point(655, 501);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(303, 23);
             this.lblStatus.TabIndex = 51;
@@ -210,7 +210,7 @@ namespace GuitarShop_HDV
             // 
             // txtList
             // 
-            this.txtList.Location = new System.Drawing.Point(772, 239);
+            this.txtList.Location = new System.Drawing.Point(659, 239);
             this.txtList.Multiline = true;
             this.txtList.Name = "txtList";
             this.txtList.ReadOnly = true;
@@ -221,7 +221,7 @@ namespace GuitarShop_HDV
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(768, 213);
+            this.label4.Location = new System.Drawing.Point(655, 213);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(178, 23);
             this.label4.TabIndex = 49;
@@ -232,7 +232,8 @@ namespace GuitarShop_HDV
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(396, 149);
+            this.label3.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label3.Location = new System.Drawing.Point(283, 149);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(236, 31);
             this.label3.TabIndex = 22;
@@ -243,7 +244,7 @@ namespace GuitarShop_HDV
             this.btnBack.BackColor = System.Drawing.Color.Aqua;
             this.btnBack.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBack.ForeColor = System.Drawing.Color.Navy;
-            this.btnBack.Location = new System.Drawing.Point(834, 601);
+            this.btnBack.Location = new System.Drawing.Point(742, 595);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(120, 40);
             this.btnBack.TabIndex = 21;
@@ -255,7 +256,7 @@ namespace GuitarShop_HDV
             this.btnHuy.BackColor = System.Drawing.Color.Aqua;
             this.btnHuy.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHuy.ForeColor = System.Drawing.Color.Navy;
-            this.btnHuy.Location = new System.Drawing.Point(508, 601);
+            this.btnHuy.Location = new System.Drawing.Point(416, 595);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(120, 40);
             this.btnHuy.TabIndex = 20;
@@ -267,7 +268,8 @@ namespace GuitarShop_HDV
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(858, 149);
+            this.label10.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label10.Location = new System.Drawing.Point(745, 149);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(228, 31);
             this.label10.TabIndex = 15;
@@ -276,7 +278,7 @@ namespace GuitarShop_HDV
             // panel2
             // 
             this.panel2.Controls.Add(this.dgvPurchase);
-            this.panel2.Location = new System.Drawing.Point(329, 205);
+            this.panel2.Location = new System.Drawing.Point(216, 205);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(343, 355);
             this.panel2.TabIndex = 12;
@@ -318,7 +320,7 @@ namespace GuitarShop_HDV
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(595, 79);
+            this.label1.Location = new System.Drawing.Point(558, 69);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(250, 36);
             this.label1.TabIndex = 8;
@@ -330,7 +332,7 @@ namespace GuitarShop_HDV
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Blue;
-            this.label2.Location = new System.Drawing.Point(538, 24);
+            this.label2.Location = new System.Drawing.Point(496, 14);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(355, 55);
             this.label2.TabIndex = 7;
@@ -346,7 +348,6 @@ namespace GuitarShop_HDV
             this.Name = "frmPurchaseHistory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Purchase History";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmPurchaseHistory_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

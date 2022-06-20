@@ -45,6 +45,8 @@ namespace GuitarShop_HDV
             this.HomeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dgvGuitar = new System.Windows.Forms.DataGridView();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bdsGuitar = new System.Windows.Forms.BindingSource(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -67,10 +69,9 @@ namespace GuitarShop_HDV
             this.lblView = new System.Windows.Forms.Label();
             this.pbx1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bdsGuitar = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGuitar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsGuitar)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -80,7 +81,6 @@ namespace GuitarShop_HDV
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbx1)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsGuitar)).BeginInit();
             this.SuspendLayout();
             // 
             // userManagementToolStripMenuItem
@@ -207,6 +207,18 @@ namespace GuitarShop_HDV
             this.dgvGuitar.TabIndex = 0;
             this.dgvGuitar.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGuitar_CellClick);
             // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nameDataGridViewTextBoxColumn.Width = 250;
+            // 
+            // bdsGuitar
+            // 
+            this.bdsGuitar.DataSource = typeof(GuitarShop_HDV.Models.guitar);
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
@@ -236,7 +248,7 @@ namespace GuitarShop_HDV
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Blue;
-            this.label2.Location = new System.Drawing.Point(218, 0);
+            this.label2.Location = new System.Drawing.Point(165, 10);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(355, 55);
             this.label2.TabIndex = 2;
@@ -260,7 +272,7 @@ namespace GuitarShop_HDV
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label7.Location = new System.Drawing.Point(249, 55);
+            this.label7.Location = new System.Drawing.Point(196, 65);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(291, 36);
             this.label7.TabIndex = 9;
@@ -459,18 +471,6 @@ namespace GuitarShop_HDV
             this.panel1.Size = new System.Drawing.Size(1344, 721);
             this.panel1.TabIndex = 1;
             // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nameDataGridViewTextBoxColumn.Width = 250;
-            // 
-            // bdsGuitar
-            // 
-            this.bdsGuitar.DataSource = typeof(GuitarShop_HDV.Models.guitar);
-            // 
             // GuitarManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -480,11 +480,11 @@ namespace GuitarShop_HDV
             this.Name = "GuitarManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GuitarManagement";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.GuitarManagement_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGuitar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsGuitar)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -498,7 +498,6 @@ namespace GuitarShop_HDV
             ((System.ComponentModel.ISupportInitialize)(this.pbx1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsGuitar)).EndInit();
             this.ResumeLayout(false);
 
         }

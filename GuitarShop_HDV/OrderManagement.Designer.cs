@@ -43,7 +43,6 @@ namespace GuitarShop_HDV
             this.lblCustomerName = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dgvOrder = new System.Windows.Forms.DataGridView();
-            this.bdsOrder = new System.Windows.Forms.BindingSource(this.components);
             this.lblCustomerAddress = new System.Windows.Forms.Label();
             this.lblCustomerPhone = new System.Windows.Forms.Label();
             this.lblCustomerEmail = new System.Windows.Forms.Label();
@@ -68,12 +67,13 @@ namespace GuitarShop_HDV
             this.userIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bdsOrder = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrder)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsOrder)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsOrder)).BeginInit();
             this.SuspendLayout();
             // 
             // label7
@@ -82,11 +82,11 @@ namespace GuitarShop_HDV
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label7.Location = new System.Drawing.Point(532, 55);
+            this.label7.Location = new System.Drawing.Point(537, 55);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(291, 36);
+            this.label7.Size = new System.Drawing.Size(284, 36);
             this.label7.TabIndex = 9;
-            this.label7.Text = "Guitar management";
+            this.label7.Text = "Order management";
             // 
             // label4
             // 
@@ -233,13 +233,9 @@ namespace GuitarShop_HDV
             this.dgvOrder.DataSource = this.bdsOrder;
             this.dgvOrder.Location = new System.Drawing.Point(201, 97);
             this.dgvOrder.Name = "dgvOrder";
-            this.dgvOrder.Size = new System.Drawing.Size(394, 348);
+            this.dgvOrder.Size = new System.Drawing.Size(412, 348);
             this.dgvOrder.TabIndex = 44;
             this.dgvOrder.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrder_CellClick);
-            // 
-            // bdsOrder
-            // 
-            this.bdsOrder.DataSource = typeof(GuitarShop_HDV.Models.Order);
             // 
             // lblCustomerAddress
             // 
@@ -443,6 +439,10 @@ namespace GuitarShop_HDV
             this.statusDataGridViewCheckBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.statusDataGridViewCheckBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
+            // bdsOrder
+            // 
+            this.bdsOrder.DataSource = typeof(GuitarShop_HDV.Models.Order);
+            // 
             // OrderManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -452,7 +452,6 @@ namespace GuitarShop_HDV
             this.Name = "OrderManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OderManagement";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.OderManagement_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -461,9 +460,9 @@ namespace GuitarShop_HDV
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrder)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsOrder)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsOrder)).EndInit();
             this.ResumeLayout(false);
 
         }

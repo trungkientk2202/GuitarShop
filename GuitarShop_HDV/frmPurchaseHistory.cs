@@ -19,12 +19,9 @@ namespace GuitarShop_HDV
         HttpClient client;
         HttpResponseMessage reponse;
         responseGuitar res;
-        List<PurchaseHistory> listAll =new List<PurchaseHistory>();
-        List<PurchaseHistory> listDG = new List<PurchaseHistory>();
-        List<PurchaseHistory> listDM = new List<PurchaseHistory>();
-        List<PurchaseHistory> listDH = new List<PurchaseHistory>();
-        int type = 1;
-        int idOrder = 0;
+        List<Order> list = new List<Order>();
+        List<Order> listTransaction = new List<Order>();
+        int position = 0;
         public frmPurchaseHistory()
         {
             InitializeComponent();
@@ -57,214 +54,118 @@ namespace GuitarShop_HDV
                     loginToolStripMenuItem.Enabled = registerToolStripMenuItem.Enabled = adminToolStripMenuItem.Enabled = false;
                     break;
             }
+
             client = new HttpClient();
             client.BaseAddress = new Uri("http://localhost:8889/");
             client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-            var body = "{\"userID\": " + Program.user.id + "}";
-            var buffer = Encoding.UTF8.GetBytes(body);
-            var byteContent = new ByteArrayContent(buffer);
-            byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json");
-            reponse = await client.PostAsync("api/v1/getOrder", byteContent);
+            reponse = await client.GetAsync("api/v1/order");
             var json = await reponse.Content.ReadAsStringAsync();
-            try
+            responseOrder res = JsonConvert.DeserializeObject<responseOrder>(json);
+            list = res.orderDatas;
+            list = res.orderDatas;
+            if (list.Count > 0)
             {
-                responsePurchase res = JsonConvert.DeserializeObject<responsePurchase>(json);
-                if (res.message.Equals("ok"))
+                //lọc theo useriD
+                List<Order> list2 = new List<Order>();
+                for(int i = 0; i < list.Count; i++)
                 {
-                    listAll = res.orderData;
-                    foreach(PurchaseHistory pur in listAll)
+                    if (list[i].userID == Program.user.id)
                     {
-                        if (pur.isCanceled==false)
+                        list2.Add(list[i]);
+                    }
+                }
+                if (list2.Count > 0)
+                {
+                    //lọc theo transaction
+                    listTransaction.Add(list2[0]);
+                    for (int i = 1; i < list2.Count; i++)
+                    {
+                        if (!(list2[i].transactionID == list2[i - 1].transactionID))
                         {
-                            if (pur.status == true)
-                            {
-                                listDM.Add(pur);
-                            }
-                            else
-                            {
-                                if (pur.UserCanceled == false)
-                                {
-
-                                    listDG.Add(pur);
-                                }
-                                else
-                                {
-                                    listDH.Add(pur);
-                                }
-                            }
+                            listTransaction.Add(list2[i]);
+                        }
+                    }
+                    bdsPurchase.DataSource = listTransaction;
+                    dgvPurchase.DataSource = listTransaction;
+                    //set STT
+                    for (int i = 0; i < listTransaction.Count; i++)
+                    {
+                        dgvPurchase.Rows[i].Cells[0].Value = i + 1;
+                    }
+                    int q = 1;
+                    string txt = "";
+                    //hiển thị list đặt hàng
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        if ((list[i].transactionID == listTransaction[0].transactionID))
+                        {
+                            txt += q + ") Guitar: " + list[i].guitarName + "\r\n Quantity: " + list[i].quantity + "\r\n Amount: " + list[i].amount + "\r\n\r\n";
+                            q++;
+                        }
+                    }
+                    txtList.Text = txt;
+                    if (listTransaction[0].isCanceled == true)
+                    {
+                        lblStatus.Text = "Tình trạng: Đã hủy";
+                        btnHuy.Enabled = false;
+                    }
+                    else
+                    {
+                        if (listTransaction[0].status == true)
+                        {
+                            lblStatus.Text = "Tình trạng: Đã mua";
+                            btnHuy.Enabled = false;
                         }
                         else
                         {
-                            listDH.Add(pur);
+                            lblStatus.Text = "Tình trạng: Đang giao hàng";
+                            btnHuy.Enabled = true;
                         }
-                        
                     }
                 }
+            }
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Có lỗi!");
-                return;
-            }
-            dgvPurchase.DataSource = listDG;
-            btnDangGiao.BackColor = System.Drawing.Color.DodgerBlue;
-            btnHuy.Enabled = true;
-            if (listDG != null)
-            {
-                idOrder = listDG[0].id;
-                lblName.Text = "Name: " + listDG[0].name;
-                lblQuantity.Text = "Quantity: " + listDG[0].quantity;
-                lblAmount.Text = "Amount: " + listDG[0].amount;
-                lblDate.Text = "Date: " + listDG[0].created;
-            }
-            else
-            {
-                lblName.Text = "Name: " ;
-                lblQuantity.Text = "Quantity: " ;
-                lblAmount.Text = "Amount: ";
-                lblDate.Text = "Date: ";
-            }
+
         }
 
-        private void btnDaMua_Click(object sender, EventArgs e)
-        {
-            type = 2;
-            btnDangGiao.BackColor = System.Drawing.SystemColors.Control;
-            btnDaHuy.BackColor = System.Drawing.SystemColors.Control;
-            btnDaMua.BackColor = System.Drawing.Color.DodgerBlue;
-            dgvPurchase.DataSource = listDM;
-            dgvPurchase.Refresh();
-            btnHuy.Enabled = false;
-            if (listDM.Count > 0)
-            {
-                idOrder = listDM[0].id;
-                lblName.Text = "Name: " + listDM[0].name;
-                lblQuantity.Text = "Quantity: " + listDM[0].quantity;
-                lblAmount.Text = "Amount: " + listDM[0].amount;
-                lblDate.Text = "Quantity: " + listDM[0].created;
-            }
-            else
-            {
-                idOrder = 0;
-                lblName.Text = "Name: ";
-                lblQuantity.Text = "Quantity: ";
-                lblAmount.Text = "Amount: ";
-                lblDate.Text = "Quantity: ";
-            }
-        }
-
-        private void btnDaHuy_Click(object sender, EventArgs e)
-        {
-            type = 3;
-            btnDangGiao.BackColor = System.Drawing.SystemColors.Control;
-            btnDaMua.BackColor = System.Drawing.SystemColors.Control;
-            btnDaHuy.BackColor = System.Drawing.Color.DodgerBlue;
-            dgvPurchase.DataSource = listDH;
-            dgvPurchase.Refresh();
-            btnHuy.Enabled = false;
-            if (listDH.Count > 0)
-            {
-                idOrder = listDH[0].id;
-                lblName.Text = "Name: " + listDH[0].name;
-                lblQuantity.Text = "Quantity: " + listDH[0].quantity;
-                lblAmount.Text = "Amount: " + listDH[0].amount;
-                lblDate.Text = "Date: " + listDH[0].created;
-            }
-            else
-            {
-                idOrder = 0;
-                lblName.Text = "Name: ";
-                lblQuantity.Text = "Quantity: ";
-                lblAmount.Text = "Amount: ";
-                lblDate.Text = "Date: ";
-            }
-        }
-
+        
         private void dgvPurchase_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            switch (type)
+            position = e.RowIndex;
+            if (position != -1)
             {
-                case 1:
-                    if (listDG.Count > 0)
+                int q = 1;
+                string txt = "";
+                for (int i = 0; i < list.Count; i++)
+                {
+                    if ((list[i].transactionID == listTransaction[position].transactionID))
                     {
-                        idOrder = listDG[e.RowIndex].id;
-                        lblName.Text = "Name: " + listDG[e.RowIndex].name;
-                        lblQuantity.Text = "Quantity: " + listDG[e.RowIndex].quantity;
-                        lblAmount.Text = "Amount: " + listDG[e.RowIndex].amount;
-                        lblDate.Text = "Date: " + listDG[e.RowIndex].created;
+                        txt += q + ") Guitar: " + list[i].guitarName + "\r\n Quantity: " + list[i].quantity + "\r\n Amount: " + list[i].amount + "\r\n\r\n";
+                        q++;
+                    }
+                }
+                txtList.Text = txt;
+                if (listTransaction[position].isCanceled == true)
+                {
+                    lblStatus.Text = "Tình trạng: Đã hủy";
+                    btnHuy.Enabled = false;
+                }
+                else
+                {
+                    if (listTransaction[position].status == true)
+                    {
+                        lblStatus.Text = "Tình trạng: Đã mua";
+                        btnHuy.Enabled = false;
                     }
                     else
                     {
-                        lblName.Text = "Name: ";
-                        lblQuantity.Text = "Quantity: ";
-                        lblAmount.Text = "Amount: ";
-                        lblDate.Text = "Date: ";
+                        lblStatus.Text = "Tình trạng: Đang giao hàng";
+                        btnHuy.Enabled = true;
                     }
-                    break;
-                case 2:
-                    if (listDM.Count > 0)
-                    {
-                        idOrder = listDM[e.RowIndex].id;
-                        lblName.Text = "Name: " + listDM[e.RowIndex].name;
-                        lblQuantity.Text = "Quantity: " + listDM[e.RowIndex].quantity;
-                        lblAmount.Text = "Amount: " + listDM[e.RowIndex].amount;
-                        lblDate.Text = "Date: " + listDM[e.RowIndex].created;
-                    }
-                    else
-                    {
-                        lblName.Text = "Name: ";
-                        lblQuantity.Text = "Quantity: ";
-                        lblAmount.Text = "Amount: ";
-                        lblDate.Text = "Date: ";
-                    }
-                    break;
-                case 3:
-                    if (listDH.Count > 0)
-                    {
-                        idOrder = listDH[e.RowIndex].id;
-                        lblName.Text = "Name: " + listDH[e.RowIndex].name;
-                        lblQuantity.Text = "Quantity: " + listDH[e.RowIndex].quantity;
-                        lblAmount.Text = "Amount: " + listDH[e.RowIndex].amount;
-                        lblDate.Text = "Date: " + listDH[e.RowIndex].created;
-                    }
-                    else
-                    {
-                        lblName.Text = "Name: ";
-                        lblQuantity.Text = "Quantity: ";
-                        lblAmount.Text = "Amount: ";
-                        lblDate.Text = "Date: ";
-                    }
-                    break;
+                }
             }
         }
 
-        private void btnDangGiao_Click(object sender, EventArgs e)
-        {
-            type = 1;
-            dgvPurchase.DataSource = listDG;
-            dgvPurchase.Refresh();
-            btnDangGiao.BackColor = System.Drawing.Color.DodgerBlue;
-            btnDaHuy.BackColor = System.Drawing.SystemColors.Control;
-            btnDaMua.BackColor = System.Drawing.SystemColors.Control;
-            btnHuy.Enabled = true;
-            if (listDG.Count > 0)
-            {
-                idOrder = listDG[0].id;
-                lblName.Text = "Name: " + listDG[0].name;
-                lblQuantity.Text = "Quantity: " + listDG[0].quantity;
-                lblAmount.Text = "Amount: " + listDG[0].amount;
-                lblDate.Text = "Date: " + listDG[0].created;
-            }
-            else
-            {
-                idOrder = 0;
-                lblName.Text = "Name: ";
-                lblQuantity.Text = "Quantity: ";
-                lblAmount.Text = "Amount: ";
-                lblDate.Text = "Date: ";
-            }
-        }
 
         private void homeToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -331,32 +232,92 @@ namespace GuitarShop_HDV
 
         private async void btnHuy_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show(idOrder.ToString());
-            var body = "{\"id\": "+idOrder + "}";
+            var body = "{\"id\": " + listTransaction[position].transactionID + "}";
             var buffer = Encoding.UTF8.GetBytes(body);
             var byteContent = new ByteArrayContent(buffer);
             byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json");
-            reponse = await client.PostAsync("api/v1/cancelOrder", byteContent);
+            reponse = await client.PostAsync("api/v1/cancelTransaction", byteContent);
             var json = await reponse.Content.ReadAsStringAsync();
             try
             {
-                foreach(PurchaseHistory temp in listAll)
+
+                reponse = await client.GetAsync("api/v1/order");
+                json = await reponse.Content.ReadAsStringAsync();
+                responseOrder res = JsonConvert.DeserializeObject<responseOrder>(json);
+                list = res.orderDatas;
+                if (list.Count > 0)
                 {
-                    if(temp.id== idOrder)
+                    //lọc theo useriD
+                    List<Order> list2 = new List<Order>();
+                    for (int i = 0; i < list.Count; i++)
                     {
-                        listDH.Add(temp);
-                        listDG.Remove(temp);
-                        dgvPurchase.DataSource = null;
-                        dgvPurchase.DataSource = listDG;
-                        MessageBox.Show("Hủy thành công!");
-                        return;
+                        if (list[i].userID == Program.user.id)
+                        {
+                            list2.Add(list[i]);
+                        }
                     }
+                    if (list2.Count > 0)
+                    {
+                        listTransaction.Clear();
+                        //lọc theo transaction
+                        listTransaction.Add(list2[0]);
+                        for (int i = 1; i < list2.Count; i++)
+                        {
+                            if (!(list2[i].transactionID == list2[i - 1].transactionID))
+                            {
+                                listTransaction.Add(list2[i]);
+                            }
+                        }
+                        bdsPurchase.DataSource = null;
+                        dgvPurchase.DataSource = null;
+                        bdsPurchase.DataSource = listTransaction;
+                        dgvPurchase.DataSource = listTransaction;
+                        //set STT
+                        for (int i = 0; i < listTransaction.Count; i++)
+                        {
+                            dgvPurchase.Rows[i].Cells[0].Value = i + 1;
+                        }
+                        int q = 1;
+                        string txt = "";
+                        //hiển thị list đặt hàng
+                        for (int i = 0; i < list.Count; i++)
+                        {
+                            if ((list[i].transactionID == listTransaction[0].transactionID))
+                            {
+                                txt += q + ") Guitar: " + list[i].guitarName + "\r\n Quantity: " + list[i].quantity + "\r\n Amount: " + list[i].amount + "\r\n\r\n";
+                                q++;
+                            }
+                        }
+                        txtList.Text = txt;
+                        if (listTransaction[0].isCanceled == true)
+                        {
+                            lblStatus.Text = "Tình trạng: Đã hủy";
+                            btnHuy.Enabled = false;
+                        }
+                        else
+                        {
+                            if (listTransaction[0].status == true)
+                            {
+                                lblStatus.Text = "Tình trạng: Đã mua";
+                                btnHuy.Enabled = false;
+                            }
+                            else
+                            {
+                                lblStatus.Text = "Tình trạng: Đang giao hàng";
+                                btnHuy.Enabled = true;
+                            }
+                        }
+                    }
+
                 }
-                
+
+                MessageBox.Show("Xác nhận đơn hàng thành công!");
+
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -372,5 +333,6 @@ namespace GuitarShop_HDV
         private void userManagementToolStripMenuItem_Click(object sender, EventArgs e)
         {
         }
+
     }
 }

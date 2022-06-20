@@ -9,6 +9,8 @@ namespace GuitarShop_HDV.Models
     public class Order
     {
         public int id { set; get; }
+
+        public int transactionID { set; get; }
         public int userID { set; get; }
         public string customerName { set; get; }
         public string customerEmail { set; get; }
@@ -28,9 +30,10 @@ namespace GuitarShop_HDV.Models
         {
         }
 
-        public Order(int id, int userID, string customerName, string customerEmail, string customerPhone, string customerAddress, string guitarName, int quantity, double amount, bool status, DateTime created, DateTime? updated, bool isCanceled)
+        public Order(int id, int transactionID, int userID, string customerName, string customerEmail, string customerPhone, string customerAddress, string guitarName, int quantity, double amount, bool status, DateTime created, DateTime? updated, bool isCanceled)
         {
             this.id = id;
+            this.transactionID = transactionID;
             this.userID = userID;
             this.customerName = customerName;
             this.customerEmail = customerEmail;

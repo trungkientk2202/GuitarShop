@@ -33,36 +33,23 @@ namespace GuitarShop_HDV
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnReturn = new System.Windows.Forms.Button();
             this.btnInsert = new System.Windows.Forms.Button();
-            this.lblDiscount = new System.Windows.Forms.Label();
-            this.lblPrice = new System.Windows.Forms.Label();
-            this.lblCategory = new System.Windows.Forms.Label();
-            this.lblView = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.lblStatus = new System.Windows.Forms.Label();
-            this.lblAmount = new System.Windows.Forms.Label();
-            this.lblQuantity = new System.Windows.Forms.Label();
-            this.lblGuitarName = new System.Windows.Forms.Label();
+            this.txtList = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblCustomerName = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dgvOrder = new System.Windows.Forms.DataGridView();
+            this.bdsOrder = new System.Windows.Forms.BindingSource(this.components);
             this.lblCustomerAddress = new System.Windows.Forms.Label();
             this.lblCustomerPhone = new System.Windows.Forms.Label();
             this.lblCustomerEmail = new System.Windows.Forms.Label();
-            this.lblCustomerName = new System.Windows.Forms.Label();
-            this.lblUserID = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dgvOrder = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.guitarNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bdsOrder = new System.Windows.Forms.BindingSource(this.components);
+            this.lblPrice = new System.Windows.Forms.Label();
+            this.lblCategory = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.HomeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -78,6 +65,9 @@ namespace GuitarShop_HDV
             this.guitarManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.orderManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -103,7 +93,7 @@ namespace GuitarShop_HDV
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label4.Location = new System.Drawing.Point(1000, 36);
+            this.label4.Location = new System.Drawing.Point(845, 36);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(127, 31);
             this.label4.TabIndex = 26;
@@ -114,28 +104,18 @@ namespace GuitarShop_HDV
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label3.Location = new System.Drawing.Point(281, 36);
+            this.label3.Location = new System.Drawing.Point(287, 36);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(198, 31);
             this.label3.TabIndex = 25;
             this.label3.Text = "Danh sách Order";
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(795, 89);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 23);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "ID User:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnReturn
             // 
             this.btnReturn.BackColor = System.Drawing.Color.Aqua;
             this.btnReturn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReturn.ForeColor = System.Drawing.Color.Navy;
-            this.btnReturn.Location = new System.Drawing.Point(1084, 541);
+            this.btnReturn.Location = new System.Drawing.Point(753, 488);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(120, 40);
             this.btnReturn.TabIndex = 11;
@@ -148,53 +128,13 @@ namespace GuitarShop_HDV
             this.btnInsert.BackColor = System.Drawing.Color.Aqua;
             this.btnInsert.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInsert.ForeColor = System.Drawing.Color.Navy;
-            this.btnInsert.Location = new System.Drawing.Point(823, 541);
+            this.btnInsert.Location = new System.Drawing.Point(492, 488);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(196, 40);
             this.btnInsert.TabIndex = 10;
             this.btnInsert.Text = "Xác nhận đơn hàng";
             this.btnInsert.UseVisualStyleBackColor = false;
             this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
-            // 
-            // lblDiscount
-            // 
-            this.lblDiscount.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDiscount.Location = new System.Drawing.Point(795, 352);
-            this.lblDiscount.Name = "lblDiscount";
-            this.lblDiscount.Size = new System.Drawing.Size(128, 23);
-            this.lblDiscount.TabIndex = 8;
-            this.lblDiscount.Text = "Guitar Name:";
-            this.lblDiscount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblPrice
-            // 
-            this.lblPrice.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrice.Location = new System.Drawing.Point(795, 297);
-            this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(178, 23);
-            this.lblPrice.TabIndex = 7;
-            this.lblPrice.Text = "Customer Address:";
-            this.lblPrice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblCategory
-            // 
-            this.lblCategory.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategory.Location = new System.Drawing.Point(795, 240);
-            this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(140, 23);
-            this.lblCategory.TabIndex = 6;
-            this.lblCategory.Text = "Customer Phone:";
-            this.lblCategory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblView
-            // 
-            this.lblView.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblView.Location = new System.Drawing.Point(795, 138);
-            this.lblView.Name = "lblView";
-            this.lblView.Size = new System.Drawing.Size(140, 23);
-            this.lblView.TabIndex = 5;
-            this.lblView.Text = "Customer Name:";
-            this.lblView.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel1
             // 
@@ -221,29 +161,21 @@ namespace GuitarShop_HDV
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.lblStatus);
-            this.panel4.Controls.Add(this.lblAmount);
-            this.panel4.Controls.Add(this.lblQuantity);
-            this.panel4.Controls.Add(this.lblGuitarName);
+            this.panel4.Controls.Add(this.txtList);
+            this.panel4.Controls.Add(this.label1);
+            this.panel4.Controls.Add(this.lblCustomerName);
+            this.panel4.Controls.Add(this.label5);
+            this.panel4.Controls.Add(this.dgvOrder);
             this.panel4.Controls.Add(this.lblCustomerAddress);
             this.panel4.Controls.Add(this.lblCustomerPhone);
             this.panel4.Controls.Add(this.lblCustomerEmail);
-            this.panel4.Controls.Add(this.lblCustomerName);
-            this.panel4.Controls.Add(this.lblUserID);
-            this.panel4.Controls.Add(this.label9);
-            this.panel4.Controls.Add(this.label8);
             this.panel4.Controls.Add(this.label6);
-            this.panel4.Controls.Add(this.label5);
             this.panel4.Controls.Add(this.label4);
             this.panel4.Controls.Add(this.label3);
-            this.panel4.Controls.Add(this.dgvOrder);
-            this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.btnReturn);
             this.panel4.Controls.Add(this.btnInsert);
-            this.panel4.Controls.Add(this.lblDiscount);
             this.panel4.Controls.Add(this.lblPrice);
             this.panel4.Controls.Add(this.lblCategory);
-            this.panel4.Controls.Add(this.lblView);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel4.Location = new System.Drawing.Point(0, 94);
@@ -251,46 +183,68 @@ namespace GuitarShop_HDV
             this.panel4.Size = new System.Drawing.Size(1344, 603);
             this.panel4.TabIndex = 3;
             // 
-            // lblStatus
+            // txtList
             // 
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(957, 493);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(62, 21);
-            this.lblStatus.TabIndex = 42;
-            this.lblStatus.Text = "label18";
+            this.txtList.Location = new System.Drawing.Point(710, 254);
+            this.txtList.Multiline = true;
+            this.txtList.Name = "txtList";
+            this.txtList.ReadOnly = true;
+            this.txtList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtList.Size = new System.Drawing.Size(476, 190);
+            this.txtList.TabIndex = 48;
             // 
-            // lblAmount
+            // label1
             // 
-            this.lblAmount.AutoSize = true;
-            this.lblAmount.Location = new System.Drawing.Point(958, 445);
-            this.lblAmount.Name = "lblAmount";
-            this.lblAmount.Size = new System.Drawing.Size(62, 21);
-            this.lblAmount.TabIndex = 41;
-            this.lblAmount.Text = "label17";
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(706, 229);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(178, 23);
+            this.label1.TabIndex = 47;
+            this.label1.Text = "Danh sách đặt hàng:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lblQuantity
+            // lblCustomerName
             // 
-            this.lblQuantity.AutoSize = true;
-            this.lblQuantity.Location = new System.Drawing.Point(957, 397);
-            this.lblQuantity.Name = "lblQuantity";
-            this.lblQuantity.Size = new System.Drawing.Size(62, 21);
-            this.lblQuantity.TabIndex = 40;
-            this.lblQuantity.Text = "label16";
+            this.lblCustomerName.AutoSize = true;
+            this.lblCustomerName.Location = new System.Drawing.Point(868, 98);
+            this.lblCustomerName.Name = "lblCustomerName";
+            this.lblCustomerName.Size = new System.Drawing.Size(62, 21);
+            this.lblCustomerName.TabIndex = 46;
+            this.lblCustomerName.Text = "label12";
             // 
-            // lblGuitarName
+            // label5
             // 
-            this.lblGuitarName.AutoSize = true;
-            this.lblGuitarName.Location = new System.Drawing.Point(958, 353);
-            this.lblGuitarName.Name = "lblGuitarName";
-            this.lblGuitarName.Size = new System.Drawing.Size(62, 21);
-            this.lblGuitarName.TabIndex = 39;
-            this.lblGuitarName.Text = "label15";
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(706, 97);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(140, 23);
+            this.label5.TabIndex = 45;
+            this.label5.Text = "Tên khách hàng:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // dgvOrder
+            // 
+            this.dgvOrder.AutoGenerateColumns = false;
+            this.dgvOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOrder.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.userIDDataGridViewTextBoxColumn,
+            this.createdDataGridViewTextBoxColumn,
+            this.statusDataGridViewCheckBoxColumn});
+            this.dgvOrder.DataSource = this.bdsOrder;
+            this.dgvOrder.Location = new System.Drawing.Point(201, 97);
+            this.dgvOrder.Name = "dgvOrder";
+            this.dgvOrder.Size = new System.Drawing.Size(394, 348);
+            this.dgvOrder.TabIndex = 44;
+            this.dgvOrder.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrder_CellClick);
+            // 
+            // bdsOrder
+            // 
+            this.bdsOrder.DataSource = typeof(GuitarShop_HDV.Models.Order);
             // 
             // lblCustomerAddress
             // 
             this.lblCustomerAddress.AutoSize = true;
-            this.lblCustomerAddress.Location = new System.Drawing.Point(958, 298);
+            this.lblCustomerAddress.Location = new System.Drawing.Point(869, 197);
             this.lblCustomerAddress.Name = "lblCustomerAddress";
             this.lblCustomerAddress.Size = new System.Drawing.Size(62, 21);
             this.lblCustomerAddress.TabIndex = 38;
@@ -299,7 +253,7 @@ namespace GuitarShop_HDV
             // lblCustomerPhone
             // 
             this.lblCustomerPhone.AutoSize = true;
-            this.lblCustomerPhone.Location = new System.Drawing.Point(958, 241);
+            this.lblCustomerPhone.Location = new System.Drawing.Point(869, 165);
             this.lblCustomerPhone.Name = "lblCustomerPhone";
             this.lblCustomerPhone.Size = new System.Drawing.Size(62, 21);
             this.lblCustomerPhone.TabIndex = 37;
@@ -308,126 +262,41 @@ namespace GuitarShop_HDV
             // lblCustomerEmail
             // 
             this.lblCustomerEmail.AutoSize = true;
-            this.lblCustomerEmail.Location = new System.Drawing.Point(957, 192);
+            this.lblCustomerEmail.Location = new System.Drawing.Point(868, 131);
             this.lblCustomerEmail.Name = "lblCustomerEmail";
             this.lblCustomerEmail.Size = new System.Drawing.Size(62, 21);
             this.lblCustomerEmail.TabIndex = 36;
             this.lblCustomerEmail.Text = "label12";
             // 
-            // lblCustomerName
-            // 
-            this.lblCustomerName.AutoSize = true;
-            this.lblCustomerName.Location = new System.Drawing.Point(958, 138);
-            this.lblCustomerName.Name = "lblCustomerName";
-            this.lblCustomerName.Size = new System.Drawing.Size(61, 21);
-            this.lblCustomerName.TabIndex = 35;
-            this.lblCustomerName.Text = "label11";
-            // 
-            // lblUserID
-            // 
-            this.lblUserID.AutoSize = true;
-            this.lblUserID.Location = new System.Drawing.Point(958, 90);
-            this.lblUserID.Name = "lblUserID";
-            this.lblUserID.Size = new System.Drawing.Size(82, 21);
-            this.lblUserID.TabIndex = 34;
-            this.lblUserID.Text = "lblUserID";
-            // 
-            // label9
-            // 
-            this.label9.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(795, 444);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(86, 23);
-            this.label9.TabIndex = 33;
-            this.label9.Text = "Amount:";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label8
-            // 
-            this.label8.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(795, 396);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(86, 23);
-            this.label8.TabIndex = 31;
-            this.label8.Text = "Quantity:";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(795, 191);
+            this.label6.Location = new System.Drawing.Point(748, 130);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(140, 23);
+            this.label6.Size = new System.Drawing.Size(56, 23);
             this.label6.TabIndex = 29;
-            this.label6.Text = "Customer Email:";
+            this.label6.Text = "Email:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label5
+            // lblPrice
             // 
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(795, 492);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(71, 23);
-            this.label5.TabIndex = 27;
-            this.label5.Text = "Status:";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblPrice.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrice.Location = new System.Drawing.Point(738, 195);
+            this.lblPrice.Name = "lblPrice";
+            this.lblPrice.Size = new System.Drawing.Size(83, 23);
+            this.lblPrice.TabIndex = 7;
+            this.lblPrice.Text = "Địa chỉ:";
+            this.lblPrice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // dgvOrder
+            // lblCategory
             // 
-            this.dgvOrder.AutoGenerateColumns = false;
-            this.dgvOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOrder.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.userIDDataGridViewTextBoxColumn,
-            this.customerNameDataGridViewTextBoxColumn,
-            this.guitarNameDataGridViewTextBoxColumn,
-            this.statusDataGridViewCheckBoxColumn});
-            this.dgvOrder.DataSource = this.bdsOrder;
-            this.dgvOrder.Location = new System.Drawing.Point(43, 89);
-            this.dgvOrder.Name = "dgvOrder";
-            this.dgvOrder.Size = new System.Drawing.Size(693, 454);
-            this.dgvOrder.TabIndex = 0;
-            this.dgvOrder.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrder_CellClick);
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.Width = 75;
-            // 
-            // userIDDataGridViewTextBoxColumn
-            // 
-            this.userIDDataGridViewTextBoxColumn.DataPropertyName = "userID";
-            this.userIDDataGridViewTextBoxColumn.HeaderText = "User ID";
-            this.userIDDataGridViewTextBoxColumn.Name = "userIDDataGridViewTextBoxColumn";
-            // 
-            // customerNameDataGridViewTextBoxColumn
-            // 
-            this.customerNameDataGridViewTextBoxColumn.DataPropertyName = "customerName";
-            this.customerNameDataGridViewTextBoxColumn.HeaderText = "Customer Name";
-            this.customerNameDataGridViewTextBoxColumn.Name = "customerNameDataGridViewTextBoxColumn";
-            this.customerNameDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // guitarNameDataGridViewTextBoxColumn
-            // 
-            this.guitarNameDataGridViewTextBoxColumn.DataPropertyName = "guitarName";
-            this.guitarNameDataGridViewTextBoxColumn.HeaderText = "Guitar Name";
-            this.guitarNameDataGridViewTextBoxColumn.Name = "guitarNameDataGridViewTextBoxColumn";
-            this.guitarNameDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // statusDataGridViewCheckBoxColumn
-            // 
-            this.statusDataGridViewCheckBoxColumn.DataPropertyName = "status";
-            this.statusDataGridViewCheckBoxColumn.HeaderText = "Status";
-            this.statusDataGridViewCheckBoxColumn.Name = "statusDataGridViewCheckBoxColumn";
-            this.statusDataGridViewCheckBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.statusDataGridViewCheckBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.statusDataGridViewCheckBoxColumn.Width = 75;
-            // 
-            // bdsOrder
-            // 
-            this.bdsOrder.DataSource = typeof(GuitarShop_HDV.Models.Order);
+            this.lblCategory.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategory.Location = new System.Drawing.Point(722, 164);
+            this.lblCategory.Name = "lblCategory";
+            this.lblCategory.Size = new System.Drawing.Size(115, 23);
+            this.lblCategory.TabIndex = 6;
+            this.lblCategory.Text = "Số điện thoại:";
+            this.lblCategory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label2
             // 
@@ -550,6 +419,30 @@ namespace GuitarShop_HDV
             this.userManagementToolStripMenuItem.Text = "User management";
             this.userManagementToolStripMenuItem.Click += new System.EventHandler(this.userManagementToolStripMenuItem_Click);
             // 
+            // userIDDataGridViewTextBoxColumn
+            // 
+            this.userIDDataGridViewTextBoxColumn.DataPropertyName = "userID";
+            this.userIDDataGridViewTextBoxColumn.HeaderText = "User ID";
+            this.userIDDataGridViewTextBoxColumn.Name = "userIDDataGridViewTextBoxColumn";
+            this.userIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // createdDataGridViewTextBoxColumn
+            // 
+            this.createdDataGridViewTextBoxColumn.DataPropertyName = "created";
+            this.createdDataGridViewTextBoxColumn.HeaderText = "Day booking";
+            this.createdDataGridViewTextBoxColumn.Name = "createdDataGridViewTextBoxColumn";
+            this.createdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.createdDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // statusDataGridViewCheckBoxColumn
+            // 
+            this.statusDataGridViewCheckBoxColumn.DataPropertyName = "status";
+            this.statusDataGridViewCheckBoxColumn.HeaderText = "status";
+            this.statusDataGridViewCheckBoxColumn.Name = "statusDataGridViewCheckBoxColumn";
+            this.statusDataGridViewCheckBoxColumn.ReadOnly = true;
+            this.statusDataGridViewCheckBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.statusDataGridViewCheckBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // OrderManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -580,19 +473,11 @@ namespace GuitarShop_HDV
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.Button btnInsert;
-        private System.Windows.Forms.Label lblDiscount;
-        private System.Windows.Forms.Label lblPrice;
-        private System.Windows.Forms.Label lblCategory;
-        private System.Windows.Forms.Label lblView;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridView dgvOrder;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem HomeToolStripMenuItem;
@@ -608,22 +493,20 @@ namespace GuitarShop_HDV
         private System.Windows.Forms.ToolStripMenuItem guitarManagerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem orderManagerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem userManagementToolStripMenuItem;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label lblStatus;
-        private System.Windows.Forms.Label lblAmount;
-        private System.Windows.Forms.Label lblQuantity;
-        private System.Windows.Forms.Label lblGuitarName;
+        private System.Windows.Forms.TextBox txtList;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblCustomerName;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridView dgvOrder;
+        private System.Windows.Forms.BindingSource bdsOrder;
         private System.Windows.Forms.Label lblCustomerAddress;
         private System.Windows.Forms.Label lblCustomerPhone;
         private System.Windows.Forms.Label lblCustomerEmail;
-        private System.Windows.Forms.Label lblCustomerName;
-        private System.Windows.Forms.Label lblUserID;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.BindingSource bdsOrder;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblPrice;
+        private System.Windows.Forms.Label lblCategory;
         private System.Windows.Forms.DataGridViewTextBoxColumn userIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn customerNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn guitarNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn createdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewCheckBoxColumn;
     }
 }

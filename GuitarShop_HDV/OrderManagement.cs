@@ -19,6 +19,7 @@ namespace GuitarShop_HDV
         HttpClient client;
         HttpResponseMessage reponse;
         List<Order> list= new List<Order>();
+        List<Order> listTransaction = new List<Order>();
         int position=0 ;
         public OrderManagement()
         {
@@ -59,68 +60,100 @@ namespace GuitarShop_HDV
             var json = await reponse.Content.ReadAsStringAsync();
             responseOrder res = JsonConvert.DeserializeObject<responseOrder>(json);
             list = res.orderDatas;
-            bdsOrder.DataSource = list;
-            dgvOrder.DataSource = list;
-            lblUserID.Text = list[0].userID.ToString();
-            lblCustomerName.Text = list[0].customerName;
-            lblCustomerEmail.Text = list[0].customerEmail;
-            lblCustomerPhone.Text = list[0].customerPhone;
-            lblCustomerAddress.Text = list[0].customerAddress;
-            lblGuitarName.Text = list[0].guitarName;
-            lblQuantity.Text = list[0].quantity.ToString();
-            lblAmount.Text = list[0].amount.ToString();
-            lblStatus.Text = list[0].status.ToString();
-            if (list[0].status == true)
+            if (list.Count > 0)
             {
-                btnInsert.Enabled = false;
+                listTransaction.Add(list[0]);
+                for (int i = 1; i < list.Count; i++)
+                {
+                    if (!(list[i].transactionID == list[i - 1].transactionID))
+                    {
+                        listTransaction.Add(list[i]);
+                    }
+                }
+                bdsOrder.DataSource = listTransaction;
+                dgvOrder.DataSource = listTransaction;
+                lblCustomerName.Text = listTransaction[0].customerName;
+                lblCustomerEmail.Text = listTransaction[0].customerEmail;
+                lblCustomerPhone.Text = listTransaction[0].customerPhone;
+                lblCustomerAddress.Text = listTransaction[0].customerAddress;
+                int q = 1;
+                string txt = "";
+                for (int i = 0; i < list.Count; i++)
+                {
+                    if ((list[i].transactionID == listTransaction[0].transactionID))
+                    {
+                        txt += q + ") Guitar: " + list[i].guitarName + "\r\n Quantity: " + list[i].quantity + "\r\n Amount: " + list[i].amount + "\r\n\r\n";
+                        q++;
+                    }
+                }
+                txtList.Text = txt;
+                if (listTransaction[0].status == true)
+                {
+                    btnInsert.Enabled = false;
+                }
             }
-        }
-
-        private void dgvOrder_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            position = e.RowIndex;
-            lblUserID.Text = list[position].userID.ToString();
-            lblCustomerName.Text = list[position].customerName;
-            lblCustomerEmail.Text = list[position].customerEmail;
-            lblCustomerPhone.Text = list[position].customerPhone;
-            lblCustomerAddress.Text = list[position].customerAddress;
-            lblGuitarName.Text = list[position].guitarName;
-            lblQuantity.Text = list[position].quantity.ToString();
-            lblAmount.Text = list[position].amount.ToString();
-            lblStatus.Text = list[position].status.ToString();
-            if(list[position].status == true)
-            {
-                btnInsert.Enabled = false;
-            }
-            else
-            {
-                btnInsert.Enabled = true;
-            }
+            
+            
         }
 
 
         private async void btnInsert_Click(object sender, EventArgs e)
         {
-            var body = "{\"id\": " + list[position].id + "}";
+            var body = "{\"id\": " + listTransaction[position].transactionID + "}";
             var buffer = Encoding.UTF8.GetBytes(body);
             var byteContent = new ByteArrayContent(buffer);
             byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json");
-            reponse = await client.PostAsync("api/v1/confirmOrder", byteContent);
+            reponse = await client.PostAsync("api/v1/confirmTransaction", byteContent);
             var json = await reponse.Content.ReadAsStringAsync();
             try
             {
+                
+                reponse = await client.GetAsync("api/v1/order");
+                json = await reponse.Content.ReadAsStringAsync();
                 responseOrder res = JsonConvert.DeserializeObject<responseOrder>(json);
-                if (res.orderData.errCode.Equals(0))
+                list = res.orderDatas;
+                listTransaction.Clear();
+                if (list.Count > 0)
                 {
-                    reponse = await client.GetAsync("api/v1/order");
-                    json = await reponse.Content.ReadAsStringAsync();
-                    res = JsonConvert.DeserializeObject<responseOrder>(json);
-                    list = res.orderDatas;
-                    bdsOrder.DataSource = list;
-                    dgvOrder.DataSource = list;
-                    MessageBox.Show("Xác nhận đơn hàng thành công!");
-
+                    listTransaction.Add(list[0]);
+                    for (int i = 1; i < list.Count; i++)
+                    {
+                        if (!(list[i].transactionID == list[i - 1].transactionID))
+                        {
+                            listTransaction.Add(list[i]);
+                        }
+                    }
+                    bdsOrder.DataSource = null;
+                    dgvOrder.DataSource = null;
+                    bdsOrder.DataSource = listTransaction;
+                    dgvOrder.DataSource = listTransaction;
+                    lblCustomerName.Text = listTransaction[0].customerName;
+                    lblCustomerEmail.Text = listTransaction[0].customerEmail;
+                    lblCustomerPhone.Text = listTransaction[0].customerPhone;
+                    lblCustomerAddress.Text = listTransaction[0].customerAddress;
+                    int q = 1;
+                    string txt = "";
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        if ((list[i].transactionID == listTransaction[0].transactionID))
+                        {
+                            txt += q + ") Guitar: " + list[i].guitarName + "\r\n Quantity: " + list[i].quantity + "\r\n Amount: " + list[i].amount + "\r\n\r\n";
+                            q++;
+                        }
+                    }
+                    txtList.Text = txt;
+                    if (listTransaction[0].status == true)
+                    {
+                        btnInsert.Enabled = false;
+                    }
+                    else
+                    {
+                        btnInsert.Enabled = true;
+                    }
                 }
+                MessageBox.Show("Xác nhận đơn hàng thành công!");
+
+                
 
 
             }
@@ -204,6 +237,34 @@ namespace GuitarShop_HDV
                 f.Show();
             }
             this.Hide();
+        }
+
+        private void dgvOrder_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            position = e.RowIndex;
+            lblCustomerName.Text = listTransaction[position].customerName;
+            lblCustomerEmail.Text = listTransaction[position].customerEmail;
+            lblCustomerPhone.Text = listTransaction[position].customerPhone;
+            lblCustomerAddress.Text = listTransaction[position].customerAddress;
+            int q = 1;
+            string txt = "";
+            for (int i = 0; i < list.Count; i++)
+            {
+                if ((list[i].transactionID == listTransaction[position].transactionID))
+                {
+                    txt += q + ") Guitar: " + list[i].guitarName + "\r\n Quantity: " + list[i].quantity + "\r\n Amount: " + list[i].amount + "\r\n\r\n";
+                    q++;
+                }
+            }
+            txtList.Text = txt;
+            if (listTransaction[position].status == true)
+            {
+                btnInsert.Enabled = false;
+            }
+            else
+            {
+                btnInsert.Enabled = true;
+            }
         }
     }
 }

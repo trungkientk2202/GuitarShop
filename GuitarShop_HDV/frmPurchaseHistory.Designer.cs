@@ -55,10 +55,10 @@ namespace GuitarShop_HDV
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvPurchase = new System.Windows.Forms.DataGridView();
             this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bdsPurchase = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.createdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bdsPurchase = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -250,6 +250,7 @@ namespace GuitarShop_HDV
             this.btnBack.TabIndex = 21;
             this.btnBack.Text = "Trở lại";
             this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnHuy
             // 
@@ -303,17 +304,6 @@ namespace GuitarShop_HDV
             this.STT.HeaderText = "STT";
             this.STT.Name = "STT";
             // 
-            // createdDataGridViewTextBoxColumn
-            // 
-            this.createdDataGridViewTextBoxColumn.DataPropertyName = "created";
-            this.createdDataGridViewTextBoxColumn.HeaderText = "Date Booking";
-            this.createdDataGridViewTextBoxColumn.Name = "createdDataGridViewTextBoxColumn";
-            this.createdDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // bdsPurchase
-            // 
-            this.bdsPurchase.DataSource = typeof(GuitarShop_HDV.Models.PurchaseHistory);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -337,6 +327,17 @@ namespace GuitarShop_HDV
             this.label2.Size = new System.Drawing.Size(355, 55);
             this.label2.TabIndex = 7;
             this.label2.Text = "GUITAR SHOP";
+            // 
+            // createdDataGridViewTextBoxColumn
+            // 
+            this.createdDataGridViewTextBoxColumn.DataPropertyName = "created";
+            this.createdDataGridViewTextBoxColumn.HeaderText = "Date Booking";
+            this.createdDataGridViewTextBoxColumn.Name = "createdDataGridViewTextBoxColumn";
+            this.createdDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // bdsPurchase
+            // 
+            this.bdsPurchase.DataSource = typeof(GuitarShop_HDV.Models.PurchaseHistory);
             // 
             // frmPurchaseHistory
             // 

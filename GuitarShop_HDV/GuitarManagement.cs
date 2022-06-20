@@ -115,6 +115,12 @@ namespace GuitarShop_HDV
 
         private async void btnDelete_Click(object sender, EventArgs e)
         {
+            DialogResult dlr = MessageBox.Show("Bạn muốn xóa Guitar này?",
+                "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dlr == DialogResult.No)
+            {
+                return;
+            }
             var body = "{\"id\": " + Program.list[position].id + "}";
             var buffer = Encoding.UTF8.GetBytes(body);
             var byteContent = new ByteArrayContent(buffer);

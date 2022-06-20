@@ -51,7 +51,6 @@ namespace GuitarShop_HDV
             this.dgvGuitar = new System.Windows.Forms.DataGridView();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtContents = new System.Windows.Forms.TextBox();
-            this.btnBuy = new System.Windows.Forms.Button();
             this.lblName = new System.Windows.Forms.Label();
             this.btnAddToCart = new System.Windows.Forms.Button();
             this.lblMoney = new System.Windows.Forms.Label();
@@ -203,7 +202,6 @@ namespace GuitarShop_HDV
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.dgvGuitar);
             this.panel4.Controls.Add(this.txtContents);
-            this.panel4.Controls.Add(this.btnBuy);
             this.panel4.Controls.Add(this.lblName);
             this.panel4.Controls.Add(this.btnAddToCart);
             this.panel4.Controls.Add(this.lblMoney);
@@ -261,19 +259,6 @@ namespace GuitarShop_HDV
             this.txtContents.Size = new System.Drawing.Size(464, 142);
             this.txtContents.TabIndex = 4;
             // 
-            // btnBuy
-            // 
-            this.btnBuy.BackColor = System.Drawing.Color.Aqua;
-            this.btnBuy.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuy.ForeColor = System.Drawing.Color.Navy;
-            this.btnBuy.Location = new System.Drawing.Point(1130, 555);
-            this.btnBuy.Name = "btnBuy";
-            this.btnBuy.Size = new System.Drawing.Size(120, 30);
-            this.btnBuy.TabIndex = 11;
-            this.btnBuy.Text = "Buy";
-            this.btnBuy.UseVisualStyleBackColor = false;
-            this.btnBuy.Click += new System.EventHandler(this.btnBuy_Click);
-            // 
             // lblName
             // 
             this.lblName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -292,7 +277,7 @@ namespace GuitarShop_HDV
             this.btnAddToCart.BackColor = System.Drawing.Color.Aqua;
             this.btnAddToCart.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddToCart.ForeColor = System.Drawing.Color.Navy;
-            this.btnAddToCart.Location = new System.Drawing.Point(901, 555);
+            this.btnAddToCart.Location = new System.Drawing.Point(1044, 553);
             this.btnAddToCart.Name = "btnAddToCart";
             this.btnAddToCart.Size = new System.Drawing.Size(120, 30);
             this.btnAddToCart.TabIndex = 10;
@@ -428,7 +413,6 @@ namespace GuitarShop_HDV
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox txtContents;
-        private System.Windows.Forms.Button btnBuy;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Button btnAddToCart;
         private System.Windows.Forms.Label lblMoney;

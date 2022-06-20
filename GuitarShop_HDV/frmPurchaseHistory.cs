@@ -232,6 +232,12 @@ namespace GuitarShop_HDV
 
         private async void btnHuy_Click(object sender, EventArgs e)
         {
+            DialogResult dlr = MessageBox.Show("Bạn muốn hủy đơn hàng này?",
+                "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dlr == DialogResult.No)
+            {
+                return;
+            }
             var body = "{\"id\": " + listTransaction[position].transactionID + "}";
             var buffer = Encoding.UTF8.GetBytes(body);
             var byteContent = new ByteArrayContent(buffer);
@@ -334,5 +340,16 @@ namespace GuitarShop_HDV
         {
         }
 
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(frmMain));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmMain f = new frmMain();
+                f.Show();
+            }
+            this.Hide();
+        }
     }
 }

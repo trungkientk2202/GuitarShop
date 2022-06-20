@@ -62,10 +62,13 @@ namespace GuitarShop_HDV
             list = res.orderDatas;
             if (list.Count > 0)
             {
-                listTransaction.Add(list[0]);
+                if (list[0].isCanceled==false)
+                {
+                    listTransaction.Add(list[0]);
+                }
                 for (int i = 1; i < list.Count; i++)
                 {
-                    if (!(list[i].transactionID == list[i - 1].transactionID))
+                    if (!(list[i].transactionID == list[i - 1].transactionID) && list[i].isCanceled == false)
                     {
                         listTransaction.Add(list[i]);
                     }
